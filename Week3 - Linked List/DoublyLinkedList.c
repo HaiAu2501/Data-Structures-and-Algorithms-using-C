@@ -56,7 +56,9 @@ void main()
 {
     DNode *head = create(1);
     head->next = create(2);
+    head->next->prev = head;
     head->next->next = create(3);
+    head->next->next->prev = head->next;
     DNode *tail = head->next->next;
 
     printListFromBegin(head);
