@@ -16,7 +16,7 @@
 
 int m, n;
 
-// 
+//
 int maxSquare(char **matrix)
 {
     int squareSide[m][n];
