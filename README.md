@@ -1,3 +1,9 @@
+<p align="center">
+<img style="height:400px;" 
+src="https://github.com/HaiAu2501/Data-Structures-and-Algorithms-using-C/blob/main/logo.png" 
+alt="DSA"/>
+</p>
+
 # Cấu trúc dữ liệu và Thuật toán - Ngôn ngữ C/C++
 
 Chào mừng bạn đến với kho lưu trữ đáng yêu này ~ Đây là một tập hợp các bài giảng, ví dụ mã nguồn, và bài tập liên quan đến việc học và thực hành *cấu trúc dữ liệu* và *thuật toán* sử dụng ngôn ngữ lập trình C/C++. Cấu trúc dữ liệu và thuật toán là những khái niệm cơ bản nhưng vô cùng quan trọng trong lập trình, đóng vai trò là nền tảng cho các chương trình máy tính.
