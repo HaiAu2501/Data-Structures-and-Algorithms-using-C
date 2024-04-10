@@ -13,6 +13,20 @@ Ngôn ngữ C và C++ là lựa chọn phổ biến cho việc học và ứng d
 * *Khả năng kiểm soát tài nguyên*. C/C++ cung cấp khả năng kiểm soát tài nguyên hệ thống mạnh mẽ, bao gồm quản lý bộ nhớ thủ công, một yếu tố quan trọng trong việc hiểu rõ và tối ưu hóa cấu trúc dữ liệu.
 * *Là nền tảng phát triển phần mềm*, nhiều hệ điều hành, trình biên dịch, và hệ thống được viết hoặc hỗ trợ bởi C/C++, làm cho việc học hai ngôn ngữ này trở thành bước đệm quan trọng cho sự phát triển chuyên nghiệp.
 
+# Lộ trình học tập
+
+Chương trình học này được thiết kế để dẫn dắt bạn từ cơ bản đến nâng cao, nắm vững những khái niệm và kỹ thuật quan trọng nhất trong lĩnh vực lập trình. Mỗi tuần, bạn sẽ tập trung vào một hoặc nhiều chủ đề cụ thể, bắt đầu từ nền tảng, xây dựng lên những kiến thức phức tạp hơn.
+
+| **Tuần** |            **Nội dung**           |                                           **Tóm tắt**                                           |
+|:--------:|:---------------------------------:|:-----------------------------------------------------------------------------------------------:|
+|          | Introduction                      | - Giới thiệu một số khái niệm cơ bản trong C/C++. - Đưa ra các lưu ý về kỹ thuật lập trình.     |
+|          | Practice                          | - Nơi tôi triển khai một số thuật toán phổ biến. - Chủ yếu lưu trữ những nội dung thú vị.       |
+|     1    | Recursion, Backtracking           | - Thuật toán Đệ quy. - Thuật toán Quay lui.                                                     |
+|     2    | Brach and Bound, Greedy Algorithm | - Thuật toán Nhánh cận, duyệt không gian trạng thái. - Thuật toán Tham lam cho bài toán tối ưu. |
+|     3    | Dynamic Programming               | - Thuật toán Quy hoạch động.                                                                    |
+|     4    | Linked List                       | - Danh sách liên kết                                                                            |
+|     5    | Stack, Queue, Deque               | - Ngăn xếp - Hàng đợi - Hàng đợi đôi                                                            |
+|     6    | Heap, Priority Queue              | - Khối xếp - Hàng đợi ưu tiên                                                                   |
 
 
 
