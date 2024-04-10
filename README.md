@@ -1,5 +1,5 @@
 <p align="center">
-<img style="height:400px;" 
+<img  
 src="https://github.com/HaiAu2501/Data-Structures-and-Algorithms-using-C/blob/main/logo.png" 
 alt="DSA"/>
 </p>
