@@ -17,8 +17,8 @@ Ngôn ngữ C và C++ là lựa chọn phổ biến cho việc học và ứng d
 
 Chương trình học này được thiết kế để dẫn dắt bạn từ cơ bản đến nâng cao, nắm vững những khái niệm và kỹ thuật quan trọng nhất trong lĩnh vực lập trình. Mỗi tuần, bạn sẽ tập trung vào một hoặc nhiều chủ đề cụ thể, bắt đầu từ nền tảng, xây dựng lên những kiến thức phức tạp hơn.
 
-| **Tuần** |            **Nội dung**           |                                           **Tóm tắt**                                           |
-|:--------:|:---------------------------------:|:-----------------------------------------------------------------------------------------------:|
+| **Tuần** | **Nội dung**                      | **Tóm tắt**                                                                                     |
+|:--------:|-----------------------------------|-------------------------------------------------------------------------------------------------|
 |          | Introduction                      | - Giới thiệu một số khái niệm cơ bản trong C/C++. - Đưa ra các lưu ý về kỹ thuật lập trình.     |
 |          | Practice                          | - Nơi tôi triển khai một số thuật toán phổ biến. - Chủ yếu lưu trữ những nội dung thú vị.       |
 |     1    | Recursion, Backtracking           | - Thuật toán Đệ quy. - Thuật toán Quay lui.                                                     |
