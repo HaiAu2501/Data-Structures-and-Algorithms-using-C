@@ -28,7 +28,13 @@ Chương trình học này được thiết kế để dẫn dắt bạn từ c�
 |     5    | Stack, Queue, Deque               | - Ngăn xếp<br>- Hàng đợi<br>- Hàng đợi đôi                                                         |
 |     6    | Heap, Priority Queue              | - Khối xếp<br>- Hàng đợi ưu tiên                                                                   |
 
+# Tài liệu tham khảo
 
+Dưới đây là một số cuốn sách tôi sử dụng cho việc học tập, hãy tham khảo để có thêm những thông tin hữu ích. Nghiền ngẫm chúng cùng lúc với khi xem xét kho lưu trữ này để có hiệu quả tốt nhất nhé ~
+
+* Michael T. Goodrich, Roberto Tamassia, David M. Mount; *Data Structures and Algorithms in C++*; Second Edition.
+* Alexander Shen; *Algorithms and Programming: Problems and Solutions*; Second Edition.
+* Antti Laaksonen; *Guide to Competitive Programming: Learning and Improving Algorithms Through Contests*.
 
 
 
