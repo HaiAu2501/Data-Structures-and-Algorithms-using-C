@@ -9,7 +9,7 @@ Chào mừng bạn đến với kho lưu trữ đáng yêu này ~ Đây là mộ
 
 Ngôn ngữ C và C++ là lựa chọn phổ biến cho việc học và ứng dụng cấu trúc dữ liệu và thuật toán vì nhiều lý do:
 
-* *Chúng có iệu suất cao*. C và C++ là ngôn ngữ lập trình cấp thấp hơn so với những ngôn ngữ bậc cao khác, giúp chúng có hiệu suất cao và gần gũi với phần cứng.
+* *Chúng có hiệu suất cao*. C và C++ là ngôn ngữ lập trình cấp thấp hơn so với những ngôn ngữ bậc cao khác, giúp chúng có hiệu suất cao và gần gũi với phần cứng.
 * *Khả năng kiểm soát tài nguyên*. C/C++ cung cấp khả năng kiểm soát tài nguyên hệ thống mạnh mẽ, bao gồm quản lý bộ nhớ thủ công, một yếu tố quan trọng trong việc hiểu rõ và tối ưu hóa cấu trúc dữ liệu.
 * *Là nền tảng phát triển phần mềm*, nhiều hệ điều hành, trình biên dịch, và hệ thống được viết hoặc hỗ trợ bởi C/C++, làm cho việc học hai ngôn ngữ này trở thành bước đệm quan trọng cho sự phát triển chuyên nghiệp.
 
