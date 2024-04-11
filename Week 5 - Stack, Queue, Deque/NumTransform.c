@@ -2,6 +2,16 @@
 #include <stdlib.h>
 #include <string.h>
 
+// Đề bài: Cho 4 số nguyên dương c, d, x, y (0 < c, d, x, y <= 30). Bạn có thể thực hiện các thao tác sau:
+// - Thao tác I: (a, b) -> (a - b, b) nếu a >= b
+// - Thao tác II: (a, b) -> (a + b, b)
+// - Thao tác III: (a, b) -> (b, a)
+// Hãy tìm cách biến đổi số c, d thành x, y. Nếu không thể biến đổi được, in ra -1.
+/* Sử dụng thuật toán BFS (Tìm kiếm theo chiều sâu) để duyệt cây trạng thái.
+ * - Bắt đầu từ trạng thái (c, d), thực hiện các thao tác I, II, III để tạo ra các trạng thái mới.
+ * - Nếu trạng thái mới chưa từng tồn tại, thêm vào hàng đợi và đánh dấu đã thăm.
+ */
+
 #define MAX 1000
 
 typedef struct

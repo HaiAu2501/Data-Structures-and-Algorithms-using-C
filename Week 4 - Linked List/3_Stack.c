@@ -77,3 +77,21 @@ void printStack(Node *root)
     }
     printf("\n");
 }
+
+void main()
+{
+    Node *root = NULL;
+
+    push(&root, 1);
+    push(&root, 2);
+    push(&root, 3);
+
+    printf("Stack: ");
+    printStack(root);
+
+    printf("Top element: %d\n", peek(root));
+
+    printf("Pop: %d\n", pop(&root));
+    printf("Stack after pop: ");
+    printStack(root);
+}
