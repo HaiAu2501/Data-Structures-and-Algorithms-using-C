@@ -30,9 +30,9 @@ Chương trình học này được thiết kế để dẫn dắt bạn từ c�
 |     1    | Recursion, Backtracking           | - Thuật toán Đệ quy.<br>- Thuật toán Quay lui.                                                     |
 |     2    | Brach and Bound, Greedy Algorithm | - Thuật toán Nhánh cận, duyệt không gian trạng thái.<br>- Thuật toán Tham lam cho bài toán tối ưu. |
 |     3    | Dynamic Programming               | - Thuật toán Quy hoạch động.                                                                       |
-|     4    | Linked List                       | - Danh sách liên kết                                                                               |
-|     5    | Stack, Queue, Deque               | - Ngăn xếp<br>- Hàng đợi<br>- Hàng đợi đôi                                                         |
-|     6    | Heap, Priority Queue              | - Khối xếp<br>- Hàng đợi ưu tiên                                                                   |
+|     4    | Linked List                       | - Danh sách liên kết.                                                                           |
+|     5    | Stack, Queue, Deque               | - Ngăn xếp.<br>- Hàng đợi.<br>- Hàng đợi đôi.                                                        |
+|     6    | Heap, Priority Queue              | - Khối xếp.<br>- Hàng đợi ưu tiên.                                                                   |
 
 # Tài liệu tham khảo
 
@@ -41,6 +41,7 @@ Dưới đây là một số cuốn sách tôi sử dụng cho việc học tậ
 * Michael T. Goodrich, Roberto Tamassia, David M. Mount; *Data Structures and Algorithms in C++*; Second Edition.
 * Alexander Shen; *Algorithms and Programming: Problems and Solutions*; Second Edition.
 * Antti Laaksonen; *Guide to Competitive Programming: Learning and Improving Algorithms Through Contests*.
+* Robert C. Seacord; *Effective C: An Introduction to Professional C Programming*.
 
 
 
