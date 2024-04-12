@@ -23,11 +23,10 @@ Node *create(int data) // data là dữ liệu của Node, hàm này trả về 
 // Hàm in ra danh sách liên kết
 void printList(Node *head)
 {
-    Node *current = head;   // Con trỏ current trỏ đến head
-    while (current != NULL) // Duyệt qua danh sách liên kết
+    while (head != NULL) // Duyệt qua danh sách liên kết
     {
-        printf("%d ", current->data); // In ra dữ liệu của Node hiện tại
-        current = current->next;      // Di chuyển con trỏ current đến Node tiếp theo
+        printf("%d ", head->data); // In ra dữ liệu của Node hiện tại
+        head = head->next;         // Di chuyển con trỏ đến Node tiếp theo
     }
     printf("\n");
 }
@@ -129,26 +128,32 @@ int main()
     head->next->next = create(3); // Tạo một Node tiếp theo với dữ liệu là 3
 
     // In ra danh sách liên kết
+    printf("Danh sach lien ket: ");
     printList(head);
 
     // Thêm một Node vào cuối danh sách liên kết
     apppend(head, 4);
+    printf("Danh sach lien ket sau khi them Node 4 vao cuoi: ");
     printList(head);
 
     // Thêm một Node vào đầu danh sách liên kết
     prepend(&head, 0);
+    printf("Danh sach lien ket sau khi them Node 0 vao dau: ");
     printList(head);
 
     // Thêm một Node vào trước một Node cho trước
     insertBefore(&head, head->next->next, 5);
+    printf("Danh sach lien ket sau khi them Node 5 vao truoc Node 3: ");
     printList(head);
 
     // Thêm một Node vào sau một Node cho trước
     insertAfter(head->next->next, 6);
+    printf("Danh sach lien ket sau khi them Node 6 vao sau Node 3: ");
     printList(head);
 
     // Xóa một Node với dữ liệu cho trước
     deleteNode(&head, 3);
+    printf("Danh sach lien ket sau khi xoa Node 3: ");
     printList(head);
 
     return 0;

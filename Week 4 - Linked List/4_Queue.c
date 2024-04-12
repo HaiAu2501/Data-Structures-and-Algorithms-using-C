@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 // Hàng đợi (Queue) là một cấu trúc dữ liệu dạng FIFO (First In First Out, vào trước ra trước)
 /* Các phép toán cơ bản trên hàng đợi:
@@ -38,10 +39,13 @@ Queue *createQueue()
     return q;
 }
 
-// Hàm kiểm tra hàng đợi có rỗng không
-int isEmpty(Queue *q)
+// Hàm tạo một Node mới
+Node *createNode(int data)
 {
-    return q->front == NULL;
+    Node *new_node = (Node *)malloc(sizeof(Node));
+    new_node->data = data;
+    new_node->next = NULL;
+    return new_node;
 }
 
 // Hàm thêm một phần tử vào cuối hàng đợi
@@ -52,13 +56,10 @@ int isEmpty(Queue *q)
  */
 void enqueue(Queue *q, int data)
 {
-    Node *new_node = (Node *)malloc(sizeof(Node));
-
-    new_node->data = data;
-    new_node->next = NULL;
+    Node *new_node = createNode(data);
 
     // Nếu hàng đợi rỗng, gán cả front và rear trỏ đến Node mới
-    if (isEmpty(q))
+    if (q->front == NULL)
     {
         q->front = q->rear = new_node;
     }
@@ -77,24 +78,26 @@ void enqueue(Queue *q, int data)
  */
 int dequeue(Queue *q)
 {
-    if (isEmpty(q))
+    if (q->front == NULL)
     {
         return -1;
     }
+    else
+    {
+        int result = q->front->data;
+        Node *temp = q->front;
 
-    int result = q->front->data;
-    Node *temp = q->front;
+        q->front = q->front->next;
+        free(temp);
 
-    q->front = q->front->next;
-    free(temp);
-
-    return result;
+        return result;
+    }
 }
 
 // Hàm lấy giá trị của phần tử ở đầu hàng đợi (mà không xóa nó)
 int front(Queue *q)
 {
-    if (isEmpty(q))
+    if (q->front == NULL)
     {
         return -1;
     }
