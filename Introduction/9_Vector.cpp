@@ -8,11 +8,11 @@ using namespace std;
  * + size(): trả về số lượng phần tử trong vector
  * + empty(): kiểm tra vector có rỗng hay không
  * + resize(n): thay đổi kích thước vector thành n phần tử
- * + reserve(n): cấp phát bộ nhớ cho vector để chứa n phần tử
  * + vector[i]: trả về phần tử ở vị trí i trong vector
- * + front(): trả về tham chiếu đến phần tử đầu tiên trong vector
- * + back(): trả về tham chiếu đến phần tử cuối cùng trong vector
+ * + front(): trả về tham chiếu đến phần tử đầu tiên trong vector -> độ phức tạp O(1)
+ * + back(): trả về tham chiếu đến phần tử cuối cùng trong vector -> độ phức tạp O(1)
  * + push_back(x): thêm phần tử x vào cuối vector
+ * -> độ phức tạp O(1) nếu không cần cấp phát thêm bộ nhớ, O(n) nếu cần cấp phát thêm bộ nhớ
  * + pop_back(): xóa phần tử cuối cùng của vector và giảm kích thước vector đi 1
  */
 
