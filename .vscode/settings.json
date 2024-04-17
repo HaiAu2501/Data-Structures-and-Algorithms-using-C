@@ -2,5 +2,19 @@
     "files.associations": {
         "stdio.h": "c",
         "ostream": "cpp"
+    },
+    "markdownlint.config": {
+        "MD033": {
+            "allowed_elements": [
+                "p",
+                "details",
+                "summary",
+                "br",
+                "img",
+            ]
+        },
+        "MD029": {
+            "style": "one_or_ordered"
+        }
     }
 }
