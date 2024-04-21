@@ -3,4 +3,4 @@
 *.exe
 
 # Ignore files in .vscode folder
-.vscode/*
+.vscode/
