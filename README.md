@@ -33,7 +33,7 @@ Chương trình học này được thiết kế để dẫn dắt bạn từ c�
 |:--------:|-----------------------------------|----------------------------------------------------------------------------------------------------|
 |          | Introduction                      | - Giới thiệu một số khái niệm cơ bản trong C/C++.<br>- Đưa ra các lưu ý về kỹ thuật lập trình.     |
 |          | Practice                          | - Nơi tôi triển khai một số thuật toán phổ biến.<br>- Chủ yếu lưu trữ những nội dung thú vị.       |
-|     1    | Recursion, Backtracking           | - Thuật toán Đệ quy.<br>- Thuật toán Quay lui.                                                     |
+|     1    | [Recursion, Backtracking](/Week%201%20-%20Recursion,%20Backtracking/Recursion%20&%20Backtracking.md)           | - Thuật toán Đệ quy.<br>- Thuật toán Quay lui.                                                     |
 |     2    | Brach and Bound, Greedy Algorithm | - Thuật toán Nhánh cận, duyệt không gian trạng thái.<br>- Thuật toán Tham lam cho bài toán tối ưu. |
 |     3    | Dynamic Programming               | - Thuật toán Quy hoạch động.                                                                       |
 |     4    | Linked List                       | - Danh sách liên kết.                                                                           |
