@@ -1,7 +1,9 @@
 # Cấu trúc dữ liệu và Thuật toán - Ngôn ngữ C/C++
 
 <div align="center">
+
 ![Logo](logo.png)
+
 </div>
 
 <p align="center">
