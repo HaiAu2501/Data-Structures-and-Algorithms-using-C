@@ -1,6 +1,8 @@
 # Cấu trúc dữ liệu và Thuật toán - Ngôn ngữ C/C++
 
+<div align="center">
 ![Logo](logo.png)
+</div>
 
 <p align="center">
 <img alt="Static Badge" src="https://img.shields.io/badge/HUST-course-blue?labelColor=365486&color=DCF2F1">

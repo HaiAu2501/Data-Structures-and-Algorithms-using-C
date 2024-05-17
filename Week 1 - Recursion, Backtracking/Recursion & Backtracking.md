@@ -18,3 +18,5 @@ function recursive_function(parameters):
 ```
 
 ## Thuật toán Quay lui (Backtracking)
+
+<b>Định nghĩa:</b>
