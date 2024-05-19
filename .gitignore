@@ -4,3 +4,6 @@
 
 # Ignore files in .vscode folder
 .vscode/
+
+# Delete all .exe files in this folder
+# rm ./*/*.exe
