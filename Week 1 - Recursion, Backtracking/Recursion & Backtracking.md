@@ -56,6 +56,12 @@ Danh sách bài toán:
 - [Liệt kê dãy nhị phân](BinaryGen.c)
 - [Liệt dãy hoán vị](PermutationGen.c)
 - [Liệt kê tập con](Subsets.c)
+- [Liệt kê các cách điền toán tử](Operators.c)
+- [Sắp xếp quân hậu](QueenArrange.c)
+- [Bài toán mã đi tuần](KnightTour.c)
+- [Thay thế dấu ngoặc](ReplaceBracket.c)
+- [Điền toán tử giữa các số](Operators.c)
+- [Giải Sudoku](SudokuSolver.c)
 
 ## Sự khác nhau giữa Đệ quy và Quay lui
 
