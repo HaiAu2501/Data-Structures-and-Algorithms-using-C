@@ -187,7 +187,7 @@ int main()
     int u, v;
     while (scanf("%s", command) && command[0] != '#')
     {
-        if (strcmp(command, "addlast") == 0)
+        if (strcmp(command, "addlast") == 0) // strcmp: so sánh 2 chuỗi
         {
             scanf("%d", &key);
             addLast(&head, key);

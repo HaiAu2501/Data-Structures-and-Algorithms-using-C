@@ -17,6 +17,14 @@ function recursive_function(parameters):
         return recursive_function(modified_parameters)
 ```
 
+Danh sách bài toán:
+
+- [Sắp xếp nhanh](QuickSort.c)
+- [Tính số hạng thứ $n$ của dãy Fibonacci](Fibonacci.c)
+- [Tính hệ số nhị thức $C^k_n$](Binomial.c)
+- [Tính lũy thừa $a^n$](BinaryExponent.c)
+- [Thuật toán Karatsuba nhân hai đa thức](PolynomialMultiply.c)
+
 ## Thuật toán Quay lui (Backtracking)
 
 <b>Định nghĩa:</b> Quay lui là một kỹ thuật tìm kiếm để giải quyết các vấn đề mà các quyết định được thực hiện từng bước và có thể quay lui lại để thử các quyết định khác nếu giải pháp hiện tại không thành công.
@@ -42,6 +50,12 @@ function backtracking_function(parameters):
     
     return false
 ```
+
+Danh sách bài toán:
+
+- [Liệt kê dãy nhị phân](BinaryGen.c)
+- [Liệt dãy hoán vị](PermutationGen.c)
+- [Liệt kê tập con](Subsets.c)
 
 ## Sự khác nhau giữa Đệ quy và Quay lui
 
@@ -74,18 +88,3 @@ Các trường hợp:
 - Nếu $f(n) = \mathcal{O}(n^{\log_b a - \varepsilon})$ với $\epsilon > 0$ thì $T(n) = \Theta(n^{\log_b a})$.
 - Nếu $f(n) = \Theta(n^{\log_b a})$ thì $T(n) = \Theta(n^{\log_b a} \log n)$.
 - Nếu $f(n) = \Omega(n^{\log_b a+ \varepsilon})$ với $\varepsilon >0$ và $a f\left(\frac{n}{b}\right) \leq cf(n)$ với $c<1$ và $n$ đủ lớn thì $T(n)=\Theta(f(n))$.
-
-## Danh sách bài toán
-
-### Đệ quy
-
-- [Tính số hạng thứ $n$ của dãy Fibonacci](Fibonacci.c)
-- [Tính hệ số nhị thức $C^k_n$](Binomial.c)
-- [Tính lũy thừa $a^n$](BinaryExponent.c)
-- [Sắp xếp nhanh](QuickSort.c)  
-
-### Quay lui
-
-- [Liệt kê dãy nhị phân](BinaryGen.c)
-- [Liệt dãy hoán vị](PermutationGen.c)
-- [Liệt kê tập con](Subsets.c)
