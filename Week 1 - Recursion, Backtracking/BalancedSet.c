@@ -1,0 +1,1 @@
+// Đề bài: Cho dãy a[1..n], tìm số phần tử lớn nhất sao cho |a[i] - a[j]| <= k với mọi i, j trong đó.

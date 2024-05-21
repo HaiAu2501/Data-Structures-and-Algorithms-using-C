@@ -14,9 +14,9 @@ typedef struct Node
 // Hàm tạo một Node mới
 Node *create(int data) // data là dữ liệu của Node, hàm này trả về con trỏ kiểu Node
 {
-    Node *node = malloc(sizeof(Node)); // malloc trả về con trỏ kiểu void, cần ép kiểu về con trỏ kiểu Node
-    node->data = data;                 // Gán giá trị data cho Node
-    node->next = NULL;                 // Khởi tạo con trỏ next trỏ đến NULL
+    Node *node = (Node *)malloc(sizeof(Node)); // malloc trả về con trỏ kiểu void, cần ép kiểu về con trỏ kiểu Node
+    node->data = data;                         // Gán giá trị data cho Node
+    node->next = NULL;                         // Khởi tạo con trỏ next trỏ đến NULL
     return node;
 }
 
@@ -32,22 +32,36 @@ void printList(Node *head)
 }
 
 // Hàm thêm một Node vào cuối danh sách liên kết
-void apppend(Node *head, int data)
+void append(Node **head, int data)
 {
-    Node *current = head;
-    while (current->next != NULL)
+    if (*head == NULL)
     {
-        current = current->next;
+        *head = create(data);
     }
-    current->next = create(data);
+    else
+    {
+        Node *current = *head;
+        while (current->next != NULL)
+        {
+            current = current->next;
+        }
+        current->next = create(data);
+    }
 }
 
 // Hàm thêm một Node vào đầu danh sách liên kết
 void prepend(Node **head, int data)
 {
-    Node *newNode = create(data);
-    newNode->next = *head;
-    *head = newNode;
+    if (*head == NULL)
+    {
+        *head = create(data);
+    }
+    else
+    {
+        Node *newNode = create(data);
+        newNode->next = *head;
+        *head = newNode;
+    }
 }
 
 /* Nhận xét:
@@ -57,36 +71,52 @@ void prepend(Node **head, int data)
  * - Hàm này tạo một Node mới với dữ liệu là data, gán con trỏ next của Node mới trỏ đến con trỏ head
  */
 
-// Hàm thêm một Node vào trước một Node cho trước
-void insertBefore(Node **head, Node *before, int data)
+// Hàm thêm một Node vào trước Node thứ chứa dữ liệu key
+void insertBefore(Node **head, int key, int data)
 {
     Node *newNode = create(data);
+    Node *current = *head;
+    Node *prev = NULL;
 
-    // Kiểm tra xem danh sách có rỗng hoặc before có phải là Node đầu tiên không
-    if (*head == NULL || before == *head)
+    while (current != NULL)
     {
-        newNode->next = *head;
-        *head = newNode;
-    }
-    else
-    {
-        Node *current = *head;
-        while (current->next != before)
+        if (current->data == key)
         {
-            current = current->next;
+            if (prev == NULL)
+            {
+                newNode->next = *head;
+                *head = newNode;
+            }
+            else
+            {
+                prev->next = newNode;
+                newNode->next = current;
+            }
+            return;
         }
 
-        newNode->next = before;
-        current->next = newNode;
+        prev = current;
+        current = current->next;
     }
 }
 
-// Hàm thêm một Node vào sau một Node cho trước
-void insertAfter(Node *after, int data)
+// Hàm thêm một Node vào sau một Node chứa dữ liệu key
+void insertAfter(Node **head, int key, int data)
 {
     Node *newNode = create(data);
-    newNode->next = after->next;
-    after->next = newNode;
+    Node *current = *head;
+
+    while (current != NULL)
+    {
+        if (current->data == key)
+        {
+            newNode->next = current->next;
+            current->next = newNode;
+            return;
+        }
+
+        current = current->next;
+    }
 }
 
 // Hàm xóa một Node với dữ liệu cho trước
@@ -122,38 +152,23 @@ void deleteNode(Node **head, int data)
 // Ví dụ
 int main()
 {
-    // Tạo một danh sách liên kết
-    Node *head = create(1);       // Tạo một Node đầu tiên với dữ liệu là 1
-    head->next = create(2);       // Tạo một Node tiếp theo với dữ liệu là 2
-    head->next->next = create(3); // Tạo một Node tiếp theo với dữ liệu là 3
+    Node *head = NULL; // Khởi tạo danh sách liên kết rỗng
 
-    // In ra danh sách liên kết
-    printf("Danh sach lien ket: ");
+    int n;
+
+    while (scanf("%d", &n) == 1)
+    {
+        append(&head, n);
+        if (getchar() == '\n')
+            break;
+    }
+
     printList(head);
 
-    // Thêm một Node vào cuối danh sách liên kết
-    apppend(head, 4);
-    printf("Danh sach lien ket sau khi them Node 4 vao cuoi: ");
+    append(&head, 10);
     printList(head);
 
-    // Thêm một Node vào đầu danh sách liên kết
-    prepend(&head, 0);
-    printf("Danh sach lien ket sau khi them Node 0 vao dau: ");
-    printList(head);
-
-    // Thêm một Node vào trước một Node cho trước
-    insertBefore(&head, head->next->next, 5);
-    printf("Danh sach lien ket sau khi them Node 5 vao truoc Node 3: ");
-    printList(head);
-
-    // Thêm một Node vào sau một Node cho trước
-    insertAfter(head->next->next, 6);
-    printf("Danh sach lien ket sau khi them Node 6 vao sau Node 3: ");
-    printList(head);
-
-    // Xóa một Node với dữ liệu cho trước
-    deleteNode(&head, 3);
-    printf("Danh sach lien ket sau khi xoa Node 3: ");
+    prepend(&head, 20);
     printList(head);
 
     return 0;

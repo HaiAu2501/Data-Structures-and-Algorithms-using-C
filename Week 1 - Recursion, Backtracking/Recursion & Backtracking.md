@@ -62,6 +62,8 @@ Danh sách bài toán:
 - [Thay thế dấu ngoặc](ReplaceBracket.c)
 - [Điền toán tử giữa các số](Operators.c)
 - [Giải Sudoku](SudokuSolver.c)
+- [Liệt kê dãy con không giảm](NonDecreasing.c)
+- [Liệt kê hoán vị không có điểm cố định](NoFixPoint.c)
 
 ## Sự khác nhau giữa Đệ quy và Quay lui
 
