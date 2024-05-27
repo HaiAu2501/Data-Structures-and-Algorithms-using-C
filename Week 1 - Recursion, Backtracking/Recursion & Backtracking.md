@@ -20,6 +20,7 @@ function recursive_function(parameters):
 Danh sách bài toán:
 
 - [Sắp xếp nhanh](QuickSort.c)
+- [Thuật toán Euclid tìm ước chung lớn nhất](EculidAlgorithm.c)
 - [Tính số hạng thứ $n$ của dãy Fibonacci](Fibonacci.c)
 - [Tính hệ số nhị thức $C^k_n$](Binomial.c)
 - [Tính lũy thừa $a^n$](BinaryExponent.c)
