@@ -2,7 +2,7 @@
 
 // https://codeforces.com/problemset/problem/327/A
 
-// Đề bài: Cho dãy nhị phân a[1..n]. Có thể đảo bit một dãy con bất kỳ của dãy này một lần.
+// ĐỀ BÀI: Cho dãy nhị phân a[1..n]. Có thể đảo bit một dãy con bất kỳ của dãy này một lần.
 // Tìm số bit 1 lớn nhất có thể có sau khi đảo bit.
 
 /* THAM SỐ:
