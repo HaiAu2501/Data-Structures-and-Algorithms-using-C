@@ -6,9 +6,10 @@
 .vscode/
 
 # Ignore my private files
-Private/
+.private/
 
 # Ignore my unpublished files
+DS6 - Heap/
 
 # Ignore my python files: just for delete all .exe files in this folder
 *.py

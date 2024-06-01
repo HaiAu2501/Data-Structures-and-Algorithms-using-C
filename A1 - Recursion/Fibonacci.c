@@ -1,8 +1,21 @@
 #include <stdio.h>
 
-// Đề bài: Tính số Fibonacci thứ n.
+/* ĐỀ BÀI: Tìm số Fibonacci thứ n.
+ | - Dãy Fibonacci: 0, 1, 1, 2, 3, 5, 8, 13, 21, ...
+ | - F(0) = 0, F(1) = 1, F(n) = F(n - 1) + F(n - 2) với n >= 2.
+ */
 
-// Cách đệ quy -> O(2^n)
+/* THAM SỐ:
+ | - Đầu vào: n.
+ | - Đầu ra: số Fibonacci thứ n.
+ */
+
+/* THUẬT TOÁN: -> ĐỆ QUY: O(1.618^n) | O(1)
+ | - Công thức: F(n) = F(n - 1) + F(n - 2).
+ | - Nếu n <= 1, trả về n.
+ | - Theo Định lý thợ: T(n) = T(n - 1) + T(n - 2) + O(1) -> T(n) = O(1.618^n).
+ */
+
 int fibonacci_v1(int n)
 {
     if (n <= 1)
@@ -11,6 +24,11 @@ int fibonacci_v1(int n)
     }
     return fibonacci(n - 1) + fibonacci(n - 2);
 }
+
+/* THUẬT TOÁN: -> QUY HOẠCH ĐỘNG/ĐỆ QUY CÓ NHỚ: O(n) | O(n)
+ | - Sử dụng mảng f[] để lưu trữ kết quả của các số Fibonacci đã tính.
+ | - Công thức: F(n) = F(n - 1) + F(n - 2).
+ */
 
 // Cách lưu trữ kết quả đã tính -> Time: O(n) | Space: O(n)
 int fibonacci_v2(int n)
