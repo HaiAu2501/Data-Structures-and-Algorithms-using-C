@@ -12,12 +12,12 @@
 // Cấu trúc Node của cây nhị phân tìm kiếm
 typedef struct Node
 {
-    int data;
+    int data;           // Dữ liệu của Node
     struct Node *left;  // Con trái
     struct Node *right; // Con phải
 } Node;
 
-// Hàm tạo một Node mới
+// Hàm tạo một Node mới | Time: O(1)
 Node *createNode(int data)
 {
     Node *newNode = (Node *)malloc(sizeof(Node));
@@ -27,7 +27,7 @@ Node *createNode(int data)
     return newNode;
 }
 
-// HÀM THÊM MỘT NODE VÀO CÂY NHỊ PHÂN TÌM KIẾM
+// HÀM THÊM MỘT NODE VÀO CÂY NHỊ PHÂN TÌM KIẾM | Time: O(h) với h là chiều cao của cây
 void addNode(Node **root, int data)
 {
     // Nếu cây rỗng thì tạo Node mới và gán vào gốc cây
@@ -46,6 +46,7 @@ void addNode(Node **root, int data)
 }
 
 // HÀM TÌM KIẾM NODE TRONG CÂY NHỊ PHÂN TÌM KIẾM
+// Time: O(h) với h là chiều cao của cây, O(n) trong trường hợp xấu nhất khi cây trở thành danh sách liên kết
 /* - Tìm kiếm Node có giá trị data trong cây nhị phân tìm kiếm.
  | - Nếu tìm thấy thì trả về Node đó, ngược lại trả về NULL.
  */
@@ -63,7 +64,7 @@ Node *searchNode(Node *root, int data)
         return searchNode(root->right, data);
 }
 
-// HÀM XÓA NODE TRONG CÂY NHỊ PHÂN TÌM KIẾM
+// HÀM XÓA NODE TRONG CÂY NHỊ PHÂN TÌM KIẾM | Time: O(h) với h là chiều cao của cây
 void deleteNode(Node **root, int data)
 {
     // Nếu cây rỗng thì trả về
@@ -122,6 +123,7 @@ void preOrder(Node *root)
 // HÀM DUYỆT CÂY THEO THỨ TỰ GIỮA (In-order)
 /* - Duyệt cây theo thứ tự: Trái - Node - Phải
  | - In ra giá trị của Node hiện tại sau khi duyệt cây con bên trái và trước khi duyệt cây con bên phải.
+ | - Kết quả của việc duyệt cây theo thứ tự In-order sẽ được sắp xếp tăng dần.
  */
 void inOrder(Node *root)
 {

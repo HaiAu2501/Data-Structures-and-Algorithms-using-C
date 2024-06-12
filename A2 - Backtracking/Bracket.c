@@ -1,16 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Đề bài: Cho dãy dấu ngoặc có một số dấu ?, điền vào các dấu ? sao cho tạo thành dãy ngoặc đúng
-/*
- * Ví dụ dãy: ((??)) có thể điền thành: ((())) hoặc (()())
- * Nhận xét:
- * - Sử dụng biến check để kiểm tra xem dãy ngoặc hiện tại có đúng không
- * - Nếu gặp '(' thì tăng check lên 1
- * - Nếu gặp ')' thì giảm check đi 1
- * - Nếu gặp '?' thì thử điền vào '(' hoặc ')' và thử các trường hợp
- * - Nếu check < 0 thì dãy ngoặc không hợp lệ
- * - Nếu điền xong mà check = 0 thì in ra dãy ngoặc
+/* ĐỀ BÀI: Cho dãy dấu ngoặc có một số dấu ?, điền vào các dấu ? sao cho tạo thành dãy ngoặc đúng
+ | Ví dụ dãy: ((??)) có thể điền thành: ((())) hoặc (()())
+ */
+
+/* THAM SỐ:
+ | - Đầu vào: Dãy ngoặc chứa một số dấu ?.
+ | - Đầu ra: Các dãy ngoặc đúng.
+ */
+
+/* THUẬT TOÁN: QUAY LUI -> Độ phức tạp O(2^n) với n là số dấu ?
+ | Nhận xét:
+ | - Sử dụng biến check để kiểm tra xem dãy ngoặc hiện tại có đúng không
+ | - Nếu gặp '(' thì tăng check lên 1
+ | - Nếu gặp ')' thì giảm check đi 1
+ | - Nếu gặp '?' thì thử điền vào '(' hoặc ')' và thử các trường hợp
+ | - Nếu check < 0 thì dãy ngoặc không hợp lệ
+ | - Nếu điền xong mà check = 0 thì in ra dãy ngoặc
  */
 
 int n;

@@ -13,7 +13,7 @@
  | - Theo Định lý thợ: T(n) = T(n/2) + O(1) -> T(n) = O(log(n)).
  */
 
-// Hàm đệ quy tính a^n -> Time: O(log(n))
+// Hàm đệ quy tính a^n -> Time: O(log_2(n)) hay O(log(n))
 int power(int a, int n)
 {
     if (n == 0)
