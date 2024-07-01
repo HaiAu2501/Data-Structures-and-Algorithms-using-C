@@ -33,20 +33,7 @@ Ngôn ngữ C và C++ là lựa chọn phổ biến cho việc học và ứng d
 
 Chương trình học này được thiết kế để dẫn dắt bạn từ cơ bản đến nâng cao, nắm vững những khái niệm và kỹ thuật quan trọng nhất trong lĩnh vực lập trình. Mỗi tuần, bạn sẽ tập trung vào một hoặc nhiều chủ đề cụ thể, bắt đầu từ nền tảng, xây dựng lên những kiến thức phức tạp hơn.
 
-<div align="center">
-
-| **Tuần** | **Nội dung**                      | **Tóm tắt**                                                                                        |
-|:--------:|-----------------------------------|----------------------------------------------------------------------------------------------------|
-|          | Introduction                      | - Giới thiệu một số khái niệm cơ bản trong C/C++.<br>- Đưa ra các lưu ý về kỹ thuật lập trình.     |
-|          | Practice                          | - Nơi tôi triển khai một số thuật toán phổ biến.<br>- Chủ yếu lưu trữ những nội dung thú vị.       |
-|     1    | Recursion, Backtracking           | - Thuật toán Đệ quy.<br>- Thuật toán Quay lui.                                                     |
-|     2    | Brach and Bound, Greedy Algorithm | - Thuật toán Nhánh cận, duyệt không gian trạng thái.<br>- Thuật toán Tham lam cho bài toán tối ưu. |
-|     3    | Dynamic Programming               | - Thuật toán Quy hoạch động.                                                                       |
-|     4    | Linked List                       | - Danh sách liên kết.                                                                           |
-|     5    | Stack, Queue, Deque               | - Ngăn xếp.<br>- Hàng đợi.<br>- Hàng đợi đôi.                                                        |
-|     6    | Heap, Priority Queue              | - Khối xếp.<br>- Hàng đợi ưu tiên.                                                                   |
-
-</div>
+## ⭐ Độ phức tạp của thuật toán
 
 ## ⭐ Tài liệu tham khảo
 

@@ -23,12 +23,12 @@ typedef struct Queue
 } Queue;
 
 /* Triển khai hàng đợi trong C sử dụng 2 con trỏ front và rear:
- * - front: Con trỏ trỏ đến phần tử ở đầu hàng đợi.
- * - rear: Con trỏ trỏ đến phần tử ở cuối hàng đợi.
- * Đây là cách triển khai phổ biến nhất vì nó giúp giảm độ phức tạp của một số phép toán.
- * - Thao tác enqueue: O(1)
- * - Thao tác dequeue: O(1)
- * - Thao tác front: O(1)
+ | - front: Con trỏ trỏ đến phần tử ở đầu hàng đợi.
+ | - rear: Con trỏ trỏ đến phần tử ở cuối hàng đợi.
+ | Đây là cách triển khai phổ biến nhất vì nó giúp giảm độ phức tạp của một số phép toán.
+ | - Thao tác enqueue: O(1)
+ | - Thao tác dequeue: O(1)
+ | - Thao tác front: O(1)
  */
 
 // Hàm khởi tạo một hàng đợi

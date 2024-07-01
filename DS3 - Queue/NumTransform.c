@@ -2,107 +2,181 @@
 #include <stdlib.h>
 #include <string.h>
 
-// Đề bài: Cho 4 số nguyên dương c, d, x, y (0 < c, d, x, y <= 30). Bạn có thể thực hiện các thao tác sau:
-// - Thao tác I: (a, b) -> (a - b, b) nếu a >= b
-// - Thao tác II: (a, b) -> (a + b, b)
-// - Thao tác III: (a, b) -> (b, a)
-// Hãy tìm cách biến đổi số c, d thành x, y. Nếu không thể biến đổi được, in ra -1.
-/* Sử dụng thuật toán BFS (Tìm kiếm theo chiều sâu) để duyệt cây trạng thái.
- * - Bắt đầu từ trạng thái (c, d), thực hiện các thao tác I, II, III để tạo ra các trạng thái mới.
- * - Nếu trạng thái mới chưa từng tồn tại, thêm vào hàng đợi và đánh dấu đã thăm.
+/* Đề bài: Cho 4 số nguyên dương a, b, x, y. Bạn có thể thực hiện các thao tác sau:
+ | - Thao tác I: (a, b) -> (a - b, b) nếu a >= b
+ | - Thao tác II: (a, b) -> (a + b, b)
+ | - Thao tác III: (a, b) -> (b, a)
+ | Hãy tìm cách biến đổi số cặp số (a, b) thành số cặp số (x, y) bằng cách thực hiện các thao tác trên sao cho số lần biến đổi là ít nhất.
  */
 
-#define MAX 1000
+/* THUẬT TOÁN: -> TÌM KIẾM THEO CHIỀU RỘNG (BFS) ĐỂ DUYỆT TRẠNG THÁI
+ | - Sử dụng hàng đợi để lưu trạng thái (a, b) cần xét.
+ | - Mỗi lần lấy một trạng thái ra khỏi hàng đợi,
+ |   thực hiện các thao tác I, II, III để tạo ra các trạng thái mới và thêm vào hàng đợi, đồng thời đánh dấu đã xét.
+ | - Nếu trạng thái mới là trạng thái cần tìm thì trả về số bước biến đổi.
+ | - Nếu không tìm thấy thì trả về -1.
+ | - Để chỉ ra dãy thao tác biến đổi, ta duy trì một mảng trạng thái trước của mỗi trạng thái hiện tại.
+ |  Khi tìm được trạng thái cần tìm, ta lần ngược từ trạng thái cần tìm về trạng thái ban đầu để lấy dãy thao tác.
+ | - Độ phức tạp: O(MAX^2) với MAX là giới hạn của cặp số được biến đổi.
+ */
 
-typedef struct
+#define MAX 100 // Giới hạn của cặp số được biến đổi
+
+// Một node trong hàng đợi chứa cặp số (a, b) + số bước biến đổi từ cặp số ban đầu
+typedef struct Node
 {
-    int a, b;
-    int step;
-    char ops[MAX];
-} State;
+    int a, b, steps; // steps: số bước biến đổi
+    struct Node *next;
+} Node;
 
-// Kiểm tra trạng thái đã tồn tại hay chưa
-int visited[31][31] = {0};
-
-// Thêm trạng thái mới vào hàng đợi
-void enqueue(State *queue, int *rear, State newState)
+// Hàng đợi
+typedef struct Queue
 {
-    queue[*rear] = newState;
-    (*rear)++;
+    Node *front, *rear;
+} Queue;
+
+// Khởi tạo hàng đợi
+Queue *initQueue()
+{
+    Queue *q = (Queue *)malloc(sizeof(Queue));
+    q->front = q->rear = NULL;
+    return q;
 }
 
-// Lấy trạng thái đầu tiên trong hàng đợi
-State dequeue(State *queue, int *front)
+// Tạo một node mới
+Node *createNode(int a, int b, int steps)
 {
-    (*front)++;
-    return queue[*front - 1];
+    Node *newNode = (Node *)malloc(sizeof(Node));
+    newNode->a = a;
+    newNode->b = b;
+    newNode->steps = steps;
+    newNode->next = NULL;
+    return newNode;
 }
 
-// Kiểm tra trạng thái có hợp lệ hay không
+// Thêm một node vào cuối hàng đợi
+void enqueue(Queue *q, int a, int b, int steps)
+{
+    Node *newNode = createNode(a, b, steps);
+
+    // Nếu hàng đợi rỗng, gán cả front và rear trỏ đến Node mới
+    if (q->front == NULL)
+    {
+        q->front = q->rear = newNode;
+    }
+    else
+    {
+        q->rear->next = newNode;
+        q->rear = newNode;
+    }
+}
+
+// Lấy một node ở đầu hàng đợi (và xóa nó)
+Node *dequeue(Queue *q)
+{
+    if (q->front == NULL)
+    {
+        return NULL;
+    }
+    else
+    {
+        Node *temp = q->front;
+        q->front = q->front->next;
+
+        if (q->front == NULL)
+        {
+            q->rear = NULL;
+        }
+
+        return temp;
+    }
+}
+
+// Kiểm tra xem cặp số (a, b) có nằm trong phạm vi cho phép không
 int isValid(int a, int b)
 {
-    return a >= 0 && a <= 30 && b >= 0 && b <= 30;
+    return a >= 1 && b >= 1 && a <= MAX && b <= MAX;
 }
 
-void BFS(int c, int d, int x, int y)
+// Hàm tìm số bước biến đổi ít nhất từ cặp số (a, b) thành cặp số (x, y)
+int minSteps(int a, int b, int x, int y)
 {
-    State queue[MAX];
-    int front = 0, rear = 0;
+    // Mảng đánh dấu trạng thái đã xét
+    int visited[MAX + 1][MAX + 1];
+    memset(visited, 0, sizeof(visited));
 
-    State start;
-    start.a = c;
-    start.b = d;
-    start.step = 0;
-    sprintf(start.ops, "(%d %d)", c, d); // Thêm trạng thái ban đầu vào lịch sử thao tác
-    enqueue(queue, &rear, start);
-    visited[c][d] = 1;
+    // Mảng trạng thái trước của mỗi trạng thái
+    Node *prev[MAX + 1][MAX + 1];
+    memset(prev, 0, sizeof(prev));
 
-    while (front < rear)
+    // Khởi tạo hàng đợi
+    Queue *q = initQueue();
+
+    // Thêm trạng thái ban đầu vào hàng đợi
+    enqueue(q, a, b, 0);
+
+    // Duyệt trạng thái
+    while (q->front != NULL)
     {
-        State current = dequeue(queue, &front);
+        Node *cur = dequeue(q);
+        int a = cur->a, b = cur->b, steps = cur->steps;
 
-        if (current.a == x && current.b == y)
+        // Nếu trạng thái hiện tại là trạng thái cần tìm
+        if (a == x && b == y)
         {
-            printf("%d %s\n", current.step, current.ops);
-            return;
-        }
-
-        State newState;
-        if (current.a >= current.b)
-        { // Thao tác I
-            newState = (State){current.a - current.b, current.b, current.step + 1, ""};
-            sprintf(newState.ops, "%s (%d %d)", current.ops, newState.a, newState.b);
-            if (!visited[newState.a][newState.b])
+            // In dãy biến đổi từ trạng thái ban đầu đến trạng thái cần tìm
+            // Dùng 1 mảng để lưu dãy thao tác ngược từ trạng thái cần tìm về trạng thái ban đầu
+            Node *path[steps + 1]; // Mảng các Node lưu trạng thái
+            Node *temp = cur;
+            for (int i = steps; i >= 0; i--)
             {
-                enqueue(queue, &rear, newState);
-                visited[newState.a][newState.b] = 1;
+                path[i] = temp;
+                temp = prev[temp->a][temp->b];
             }
+
+            printf("Path: ");
+            for (int i = 0; i < steps; i++)
+            {
+                printf("(%d, %d) -> ", path[i]->a, path[i]->b);
+            }
+            printf("(%d, %d)\n", x, y);
+
+            return steps;
         }
 
-        newState = (State){current.a + current.b, current.b, current.step + 1, ""};
-        sprintf(newState.ops, "%s (%d %d)", current.ops, newState.a, newState.b);
-        if (isValid(newState.a, newState.b) && !visited[newState.a][newState.b])
+        // Thực hiện các thao tác I, II, III
+        if (isValid(a - b, b) && !visited[a - b][b])
         {
-            enqueue(queue, &rear, newState);
-            visited[newState.a][newState.b] = 1;
+            enqueue(q, a - b, b, steps + 1);
+            visited[a - b][b] = 1;
+            prev[a - b][b] = cur;
         }
 
-        newState = (State){current.b, current.a, current.step + 1, ""};
-        sprintf(newState.ops, "%s (%d %d)", current.ops, newState.a, newState.b);
-        if (!visited[newState.a][newState.b])
+        if (isValid(a + b, b) && !visited[a + b][b])
         {
-            enqueue(queue, &rear, newState);
-            visited[newState.a][newState.b] = 1;
+            enqueue(q, a + b, b, steps + 1);
+            visited[a + b][b] = 1;
+            prev[a + b][b] = cur;
+        }
+
+        if (isValid(b, a) && !visited[b][a])
+        {
+            enqueue(q, b, a, steps + 1);
+            visited[b][a] = 1;
+            prev[b][a] = cur;
         }
     }
 
-    printf("-1\n");
+    return -1;
 }
 
 int main()
 {
-    int c, d, x, y;
-    scanf("%d %d %d %d", &c, &d, &x, &y);
-    BFS(c, d, x, y);
+    int a, b, x, y;
+    scanf("%d%d%d%d", &a, &b, &x, &y);
+
+    int steps = minSteps(a, b, x, y);
+    printf("Minimum steps: %d\n", steps);
+
     return 0;
 }

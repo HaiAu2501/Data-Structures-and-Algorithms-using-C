@@ -1,115 +1,188 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct
-{
-    int x, y, dist;
-} QueueNode;
+/* ĐỀ BÀI: Tìm đường đi ngắn nhất từ một điểm đến biên của một mê cung.
+ | - Đầu vào: Mê cung kích thước R x C, vị trí ban đầu r, c.
+ | - Mê cung: 0 là đường đi được đi qua, 1 là tường, có thể đi lên, xuống, trái, phải.
+ | - Đầu ra: Độ dài đường đi ngắn nhất từ điểm ban đầu đến biên của mê cung, -1 nếu không tìm thấy.
+ | - Ví dụ:
+ | + Input:
+ |   5 5 2 2
+ |   0 1 0 0 0
+ |   0 1 0 1 0
+ |   0 0 0 1 0
+ |   1 1 1 1 0
+ |   0 0 0 0 0
+ | + Output: 2 với đường đi (2, 2) -> (2, 1) -> (2, 0) hoặc (2, 2) -> (1, 2) -> (0, 2).
+ */
 
-typedef struct
+/* THUẬT TOÁN:
+ | - Sử dụng BFS để tìm đường đi ngắn nhất từ một điểm đến biên của mê cung.
+ | - Sử dụng hàng đợi để lưu các ô cần xét.
+ | - Mỗi lần lấy một ô ra khỏi hàng đợi, xét 4 ô xung quanh nó, nếu là ô trống thì thêm vào hàng đợi và đánh dấu đã xét.
+ | - Khi gặp biên của mê cung, trả về độ dài đường đi.
+ | - Nếu không tìm thấy đường đi, trả về -1.
+ */
+
+// Các biến toàn cục
+int R, C, sr, sc;
+int **maze;
+int **visited;
+
+/* Một node trong hàng đợi chứa tọa độ x, y (x là hàng, y là cột).
+ | - Trong trường hợp này, ta triển khai hàng đợi bằng danh sách liên kết đơn với 2 con trỏ front và rear.
+ | + front: trỏ đến node đầu tiên trong hàng đợi.
+ | + rear: trỏ đến node cuối cùng trong hàng đợi.
+ | - Thao tác enqueue: O(1)
+ | - Thao tác dequeue: O(1)
+ | - Các triển khai này đơn giản hơn so với danh sách liên kết đôi và không ảnh hưởng đến thuật toán BFS.
+ */
+typedef struct Node
 {
-    QueueNode *nodes;
-    int front, rear, size, capacity;
+    int x, y, dist; // dist: độ dài đường đi từ điểm ban đầu
+    struct Node *next;
+} Node;
+
+// Hàng đợi
+typedef struct Queue
+{
+    Node *front, *rear;
 } Queue;
 
-Queue *createQueue(int capacity)
+// Khởi tạo hàng đợi
+Queue *initQueue()
 {
-    Queue *queue = (Queue *)malloc(sizeof(Queue));
-    queue->nodes = (QueueNode *)malloc(capacity * sizeof(QueueNode));
-    queue->capacity = capacity;
-    queue->front = 0;
-    queue->size = 0;
-    queue->rear = capacity - 1;
-    return queue;
+    Queue *q = (Queue *)malloc(sizeof(Queue));
+    q->front = q->rear = NULL;
+    return q;
 }
 
-void enqueue(Queue *queue, int x, int y, int dist)
+// Tạo một node mới
+Node *createNode(int x, int y, int dist)
 {
-    queue->rear = (queue->rear + 1) % queue->capacity;
-    queue->nodes[queue->rear].x = x;
-    queue->nodes[queue->rear].y = y;
-    queue->nodes[queue->rear].dist = dist;
-    queue->size++;
+    Node *newNode = (Node *)malloc(sizeof(Node));
+    newNode->x = x;
+    newNode->y = y;
+    newNode->dist = dist;
+    newNode->next = NULL;
+    return newNode;
 }
 
-QueueNode dequeue(Queue *queue)
+// Thêm một node vào cuối hàng đợi
+void enqueue(Queue *q, int x, int y, int dist)
 {
-    QueueNode node = queue->nodes[queue->front];
-    queue->front = (queue->front + 1) % queue->capacity;
-    queue->size--;
-    return node;
+    Node *newNode = createNode(x, y, dist);
+
+    if (q->front == NULL)
+    {
+        q->front = q->rear = newNode;
+    }
+    else
+    {
+        q->rear->next = newNode;
+        q->rear = newNode;
+    }
 }
 
-int isEmpty(Queue *queue)
+// Lấy node ở đầu hàng đợi và xóa nó
+Node *dequeue(Queue *q)
 {
-    return (queue->size == 0);
+    if (q->front == NULL)
+    {
+        return NULL;
+    }
+    else
+    {
+        Node *temp = q->front;
+        q->front = q->front->next;
+        if (q->front == NULL)
+        {
+            q->rear = NULL;
+        }
+        return temp;
+    }
 }
 
-void freeQueue(Queue *queue)
+// Kiểm tra xem một ô có nằm trong mê cung không
+int isValid(int x, int y)
 {
-    free(queue->nodes);
-    free(queue);
+    return x >= 0 && x < R && y >= 0 && y < C;
+}
+
+// Tìm đường đi ngắn nhất từ một điểm đến biên của mê cung
+int shortestPath(int **maze, int sr, int sc)
+{
+    // Khởi tạo mảng visited
+    visited = (int **)malloc(R * sizeof(int *));
+    for (int i = 0; i < R; i++)
+    {
+        visited[i] = (int *)malloc(C * sizeof(int));
+        for (int j = 0; j < C; j++)
+        {
+            visited[i][j] = 0;
+        }
+    }
+
+    // Khởi tạo hàng đợi
+    Queue *q = initQueue();
+    enqueue(q, sr, sc, 0);
+    visited[sr][sc] = 1;
+
+    // Dịch chuyển 4 hướng: trên, dưới, trái, phải
+    int dx[] = {-1, 1, 0, 0};
+    int dy[] = {0, 0, -1, 1};
+
+    while (q->front != NULL)
+    {
+        Node *node = dequeue(q);
+        int x = node->x;
+        int y = node->y;
+        int dist = node->dist;
+
+        // Nếu gặp biên của mê cung, trả về độ dài đường đi
+        if (x == 0 || x == R - 1 || y == 0 || y == C - 1)
+        {
+            return dist;
+        }
+
+        // Dịch chuyển 4 hướng
+        for (int i = 0; i < 4; i++)
+        {
+            int newX = x + dx[i];
+            int newY = y + dy[i];
+
+            // Nếu ô mới là ô hợp lệ và chưa xét
+            if (isValid(newX, newY) && maze[newX][newY] == 0 && !visited[newX][newY])
+            {
+                enqueue(q, newX, newY, dist + 1);
+                visited[newX][newY] = 1;
+            }
+        }
+    }
+
+    // Không tìm thấy đường đi
+    return -1;
 }
 
 int main()
 {
-    int n, m, r, c;
-    scanf("%d %d %d %d", &n, &m, &r, &c);
-    int **maze = (int **)malloc(n * sizeof(int *));
-    for (int i = 0; i < n; i++)
+    // Nhập kích thước mê cung và vị trí ban đầu
+    scanf("%d%d%d%d", &R, &C, &sr, &sc);
+
+    // Cấp phát bộ nhớ cho mê cung
+    maze = (int **)malloc(R * sizeof(int *));
+    for (int i = 0; i < R; i++)
     {
-        maze[i] = (int *)malloc(m * sizeof(int));
-        for (int j = 0; j < m; j++)
+        maze[i] = (int *)malloc(C * sizeof(int));
+        for (int j = 0; j < C; j++)
         {
             scanf("%d", &maze[i][j]);
         }
     }
 
-    // BFS initialization
-    Queue *queue = createQueue(n * m);
-    int **visited = (int **)malloc(n * sizeof(int *));
-    for (int i = 0; i < n; i++)
-    {
-        visited[i] = (int *)calloc(m, sizeof(int));
-    }
-    r--;
-    c--; // Convert to 0-indexed
-    enqueue(queue, r, c, 0);
-    visited[r][c] = 1;
-    int directions[4][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
-    int found = -1;
-
-    while (!isEmpty(queue))
-    {
-        QueueNode node = dequeue(queue);
-        // Check if it's on the boundary
-        if (node.x == 0 || node.x == n - 1 || node.y == 0 || node.y == m - 1)
-        {
-            found = node.dist + 1;
-            break;
-        }
-        for (int i = 0; i < 4; i++)
-        {
-            int nx = node.x + directions[i][0];
-            int ny = node.y + directions[i][1];
-            if (nx >= 0 && nx < n && ny >= 0 && ny < m && maze[nx][ny] == 0 && !visited[nx][ny])
-            {
-                enqueue(queue, nx, ny, node.dist + 1);
-                visited[nx][ny] = 1;
-            }
-        }
-    }
-
-    printf("%d\n", found);
-
-    for (int i = 0; i < n; i++)
-    {
-        free(maze[i]);
-        free(visited[i]);
-    }
-    free(maze);
-    free(visited);
-    freeQueue(queue);
+    // Tìm đường đi ngắn nhất
+    int result = shortestPath(maze, sr, sc);
+    printf("%d\n", result);
 
     return 0;
 }

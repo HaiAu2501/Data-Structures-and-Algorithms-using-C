@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Đề bài: Kiểm tra xem dãy ngoặc có cân đối hay không
-// Ví dụ: [()]{} là dãy ngoặc cân đối, còn [({)}] không cân đối
-/* - Sử dụng ngăn xếp để kiểm tra dãy ngoặc cân đối.
- * - Mỗi khi gặp một dấu mở ngoặc (gồm '(', '[', '{'), đẩy nó vào ngăn xếp.
- * - Mỗi khi gặp một dấu đóng ngoặc, kiểm tra xem dấu này có tương ứng với dấu mở ngoặc trên cùng của ngăn xếp hay không.
- * + Nếu không tương ứng, dãy ngoặc không cân đối.
- * + Nếu tương ứng, loại bỏ dấu mở ngoặc trên cùng khỏi ngăn xếp.
- * - Nếu ngăn xếp rỗng sau khi duyệt hết dãy ngoặc, dãy ngoặc cân đối.
+/* ĐỀ BÀI: Kiểm tra dãy ngoặc cân đối.
+ | -  Ví dụ: [()]{} là dãy ngoặc cân đối, còn [({)}] không cân đối
+ | - Sử dụng ngăn xếp để kiểm tra dãy ngoặc cân đối.
+ | - Mỗi khi gặp một dấu mở ngoặc (gồm '(', '[', '{'), đẩy nó vào ngăn xếp.
+ | - Mỗi khi gặp một dấu đóng ngoặc, kiểm tra xem dấu này có tương ứng với dấu mở ngoặc trên cùng của ngăn xếp hay không.
+ | + Nếu không tương ứng, dãy ngoặc không cân đối.
+ | + Nếu tương ứng, loại bỏ dấu mở ngoặc trên cùng khỏi ngăn xếp.
+ | - Nếu ngăn xếp rỗng sau khi duyệt hết dãy ngoặc, dãy ngoặc cân đối.
  */
 
 // Định nghĩa cấu trúc Node

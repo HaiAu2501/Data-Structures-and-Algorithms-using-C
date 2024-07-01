@@ -45,11 +45,11 @@ int isValid(int row, int col, int num)
 }
 
 // Giải bảng Sudoku
-void solveSudoku(int row, int col)
+void try(int row, int col)
 {
     if (row == 9)
     {
-        // In ra lời giải
+        // In ra bảng Sudoku
         for (int i = 0; i < 9; i++)
         {
             for (int j = 0; j < 9; j++)
@@ -68,19 +68,19 @@ void solveSudoku(int row, int col)
             {
                 board[row][col] = num;
                 if (col == 8)
-                    solveSudoku(row + 1, 0);
+                    try(row + 1, 0);
                 else
-                    solveSudoku(row, col + 1);
-                board[row][col] = 0; // Quay lui
+                    try(row, col + 1);
+                board[row][col] = 0;
             }
         }
     }
     else
     {
         if (col == 8)
-            solveSudoku(row + 1, 0);
+            try(row + 1, 0);
         else
-            solveSudoku(row, col + 1);
+            try(row, col + 1);
     }
 }
 
@@ -92,7 +92,7 @@ int main()
             scanf("%d", &board[i][j]);
     }
 
-    solveSudoku(0, 0);
+    try(0, 0);
 
     return 0;
 }

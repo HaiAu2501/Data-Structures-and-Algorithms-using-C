@@ -1,24 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Đề bài: Cho một xâu các số nguyên không âm và một số nguyên.
-// Yêu cầu: Tìm tất cả các cách thêm dấu "+", "-", "*" giữa các chữ số sao cho giá trị biểu thức thu được bằng số nguyên dương đã cho.
-/* Sử dụng thuật toán Quay lui */
+/* Đề bài: Cho một xâu các số nguyên không âm và một số nguyên.
+ | Yêu cầu: Tìm tất cả các cách thêm dấu "+", "-", "*" giữa các chữ số sao cho giá trị biểu thức thu được bằng số nguyên dương đã cho.
+ */
 
 /* Một số lưu ý khi giải:
- * - Số nguyên không âm có thể chứa nhiều hơn một chữ số. Ví dụ 102 -> 10*2.
- * -> Do đó phải tìm toán hạng bằng cách cộng các chữ số liên tiếp lại.
- * - Tại mỗi vị trí giữa các số, có 4 khả năng: không thêm dấu, thêm dấu "+", thêm dấu "-", thêm dấu "*".
- * - Toán tử ưu tiên cao nhất là "*", ví dụ: 12 + 3 * 4 = 24 (ĐÚNG), 12 + 3 * 4 = 15 * 4 = 60 (SAI).
- * -> Do đó khi tính giá trị biểu thức:
- *    - Xét từ trái qua phải, lưu trữ prev.
- *    - Nếu gặp '*' -> lấy (result - prev) + prev * current.
- * Ví dụ: 1 + 2 * 3 * 4 + 5
- * -> 1, prev = 1                  -> result = 1
- * -> 1 + 2, prev = 2              -> result = 3
- * -> 1 + 2 * 3, prev = 6          -> result = (3 - 2) + 6 = 7
- * -> 1 + 2 * 3 * 4, prev = 24     -> result = (7 - 6) + 6 * 4 = 25
- * -> 1 + 2 * 3 * 4 + 5, prev = 5  -> result = 30 (chỉ khi gặp dấu '*' mới - prev + prev * current)
+ | - Số nguyên không âm có thể chứa nhiều hơn một chữ số. Ví dụ 102 -> 10*2.
+ | -> Do đó phải tìm toán hạng bằng cách cộng các chữ số liên tiếp lại.
+ | - Tại mỗi vị trí giữa các số, có 4 khả năng: không thêm dấu, thêm dấu "+", thêm dấu "-", thêm dấu "*".
+ | - Toán tử ưu tiên cao nhất là "*", ví dụ: 12 + 3 * 4 = 24 (ĐÚNG), 12 + 3 * 4 = 15 * 4 = 60 (SAI).
+ | -> Do đó khi tính giá trị biểu thức:
+ |    - Xét từ trái qua phải, lưu trữ prev.
+ |    - Nếu gặp '*' -> lấy (result - prev) + prev * current.
+ | Ví dụ: 1 + 2 * 3 * 4 + 5
+ | -> 1, prev = 1                  -> result = 1
+ | -> 1 + 2, prev = 2              -> result = 3
+ | -> 1 + 2 * 3, prev = 6          -> result = (3 - 2) + 6 = 7
+ | -> 1 + 2 * 3 * 4, prev = 24     -> result = (7 - 6) + 6 * 4 = 25
+ | -> 1 + 2 * 3 * 4 + 5, prev = 5  -> result = 30 (chỉ khi gặp dấu '*' mới - prev + prev * current)
  */
 
 #define MAX_LENGTH 100
