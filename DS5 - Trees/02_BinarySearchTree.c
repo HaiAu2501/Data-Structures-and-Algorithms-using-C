@@ -64,6 +64,92 @@ Node *searchNode(Node *root, int data)
         return searchNode(root->right, data);
 }
 
+// HÀM TÌM PHẦN TỬ NHỎ NHẤT TRONG CÂY NHỊ PHÂN TÌM KIẾM | Time: O(h) với h là chiều cao của cây
+Node *minValueNode(Node *root)
+{
+    Node *current = root;
+
+    // Lặp qua cây con bên trái để tìm phần tử nhỏ nhất
+    while (current->left != NULL)
+        current = current->left;
+
+    return current;
+}
+
+// HÀM TÌM PHẦN TỬ LỚN NHẤT TRONG CÂY NHỊ PHÂN TÌM KIẾM | Time: O(h) với h là chiều cao của cây
+Node *maxValueNode(Node *root)
+{
+    Node *current = root;
+
+    // Lặp qua cây con bên phải để tìm phần tử lớn nhất
+    while (current->right != NULL)
+        current = current->right;
+
+    return current;
+}
+
+/* KẾ CẬN:
+ | - KẾ CẬN SAU (SUCCESSOR) của một Node là Node nhỏ nhất trong các Node lớn hơn Node đó.
+ | - KẾ CẬN TRƯỚC (PREDECESSOR) của một Node là Node lớn nhất trong các Node nhỏ hơn Node đó.
+ | - Có thể tìm kế cận sau/kế cận trước mà không cần thực hiện so sánh giá trị của chúng.
+ */
+
+/* TÌM KẾ CẬN SAU:
+ | - Nếu Node có con bên phải thì kế cận sau là Node nhỏ nhất trong cây con bên phải.
+ | - Nếu Node không có con bên phải thì kế cận sau là Node cha đầu tiên mà Node đó là con bên trái.
+ */
+Node *successor(Node *root, Node *node)
+{
+    // Nếu Node có con bên phải thì kế cận sau là Node nhỏ nhất trong cây con bên phải
+    if (node->right != NULL)
+        return minValueNode(node->right);
+
+    Node *successor = NULL;
+    // Lặp qua cây để tìm Node cha đầu tiên mà Node đó là con bên trái
+    while (root != NULL)
+    {
+        if (node->data < root->data)
+        {
+            successor = root;
+            root = root->left;
+        }
+        else if (node->data > root->data)
+            root = root->right;
+        else
+            break;
+    }
+
+    return successor;
+}
+
+/* TÌM KẾ CẬN TRƯỚC:
+ | - Nếu Node có con bên trái thì kế cận trước là Node lớn nhất trong cây con bên trái.
+ | - Nếu Node không có con bên trái thì kế cận trước là Node cha đầu tiên mà Node đó là con bên phải.
+ */
+Node *predecessor(Node *root, Node *node)
+{
+    // Nếu Node có con bên trái thì kế cận trước là Node lớn nhất trong cây con bên trái
+    if (node->left != NULL)
+        return maxValueNode(node->left);
+
+    Node *predecessor = NULL;
+    // Lặp qua cây để tìm Node cha đầu tiên mà Node đó là con bên phải
+    while (root != NULL)
+    {
+        if (node->data > root->data)
+        {
+            predecessor = root;
+            root = root->right;
+        }
+        else if (node->data < root->data)
+            root = root->left;
+        else
+            break;
+    }
+
+    return predecessor;
+}
+
 // HÀM XÓA NODE TRONG CÂY NHỊ PHÂN TÌM KIẾM | Time: O(h) với h là chiều cao của cây
 void deleteNode(Node **root, int data)
 {
@@ -96,11 +182,17 @@ void deleteNode(Node **root, int data)
         else
         {
             // Nếu Node cần xóa có cả hai con
-            // thì tìm Node lớn nhất trong cây con bên trái hoặc Node nhỏ nhất trong cây con bên phải
+            // thì tìm Node kế cận sau hoặc Node kế cận trước để thay thế cho Node cần xóa
+
+            // Tìm Node kế cận sau
             Node *temp = (*root)->right;
             while (temp->left != NULL)
                 temp = temp->left;
+
+            // Gán giá trị của Node kế cận sau vào Node cần xóa
             (*root)->data = temp->data;
+
+            // Xóa Node kế cận sau
             deleteNode(&(*root)->right, temp->data);
         }
     }
