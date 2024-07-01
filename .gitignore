@@ -12,7 +12,7 @@
 DS6 - Heap/
 
 # Ignore my python files: just for delete all .exe files in this folder
-*.py
+# *.py
 
 # Delete all .exe files in this folder
 # rm ./*/*.exe
