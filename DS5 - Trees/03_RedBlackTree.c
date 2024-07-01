@@ -239,3 +239,35 @@ void insertNode(RedBlackTree *rbt, int data)
     }
     rbt->root->color = BLACK;
 }
+
+// Hàm inOrder: Duyệt cây theo thứ tự trung tố
+void inOrder(Node *root)
+{
+    if (root == NULL)
+        return;
+
+    inOrder(root->left);
+    printf("%d ", root->data);
+    inOrder(root->right);
+}
+
+int main()
+{
+    RedBlackTree rbt;
+    rbt.root = NULL;
+
+    // Thêm các Node vào cây
+    insertNode(&rbt, 5);
+    insertNode(&rbt, 3);
+    insertNode(&rbt, 2);
+    insertNode(&rbt, 4);
+    insertNode(&rbt, 7);
+    insertNode(&rbt, 6);
+    insertNode(&rbt, 8);
+
+    // Duyệt cây theo thứ tự In-order
+    inOrder(rbt.root);
+    printf("\n");
+
+    return 0;
+}
