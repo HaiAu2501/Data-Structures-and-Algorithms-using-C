@@ -136,7 +136,7 @@ void deleteElement(int *hashTable, int key)
 
 // CÁCH 2.1: DÒ THỬ TUYẾN TÍNH (LINEAR PROBING)
 // HÀM THÊM PHẦN TỬ VÀO BẢNG BĂM TƯƠNG ỨNG VỚI PHƯƠNG PHÁP DÒ THỬ TUYẾN TÍNH
-void addElementLinearProbing(int *hashTable, int key)
+void addElementLP(int *hashTable, int key)
 {
     int index = hash(key);
     int i = 1;
@@ -149,7 +149,7 @@ void addElementLinearProbing(int *hashTable, int key)
 }
 
 // HÀM TÌM KIẾM PHẦN TỬ TRONG BẢNG BĂM TƯƠNG ỨNG VỚI PHƯƠNG PHÁP DÒ THỬ TUYẾN TÍNH
-int searchElementLinearProbing(int *hashTable, int key)
+int searchElementLP(int *hashTable, int key)
 {
     int index = hash(key);
     int i = 1;
@@ -164,16 +164,16 @@ int searchElementLinearProbing(int *hashTable, int key)
 }
 
 // HÀM XÓA PHẦN TỬ TRONG BẢNG BĂM TƯƠNG ỨNG VỚI PHƯƠNG PHÁP DÒ THỬ TUYẾN TÍNH
-void deleteElementLinearProbing(int *hashTable, int key)
+void deleteElementLP(int *hashTable, int key)
 {
-    int index = searchElementLinearProbing(hashTable, key);
+    int index = searchElementLP(hashTable, key);
     if (index != -1)
         hashTable[index] = -1;
 }
 
 // CÁCH 2.2: DÒ THỬ BÌNH PHƯƠNG (QUADRATIC PROBING)
 // HÀM THÊM PHẦN TỬ VÀO BẢNG BĂM TƯƠNG ỨNG VỚI PHƯƠNG PHÁP DÒ THỬ BÌNH PHƯƠNG
-void addElementQuadraticProbing(int *hashTable, int key)
+void addElementQP(int *hashTable, int key)
 {
     int index = hash(key);
     int i = 1;
@@ -186,7 +186,7 @@ void addElementQuadraticProbing(int *hashTable, int key)
 }
 
 // HÀM TÌM KIẾM PHẦN TỬ TRONG BẢNG BĂM TƯƠNG ỨNG VỚI PHƯƠNG PHÁP DÒ THỬ BÌNH PHƯƠNG
-int searchElementQuadraticProbing(int *hashTable, int key)
+int searchElementQP(int *hashTable, int key)
 {
     int index = hash(key);
     int i = 1;
@@ -201,9 +201,9 @@ int searchElementQuadraticProbing(int *hashTable, int key)
 }
 
 // HÀM XÓA PHẦN TỬ TRONG BẢNG BĂM TƯƠNG ỨNG VỚI PHƯƠNG PHÁP DÒ THỬ BÌNH PHƯƠNG
-void deleteElementQuadraticProbing(int *hashTable, int key)
+void deleteElementQP(int *hashTable, int key)
 {
-    int index = searchElementQuadraticProbing(hashTable, key);
+    int index = searchElementQP(hashTable, key);
     if (index != -1)
         hashTable[index] = -1;
 }
@@ -216,7 +216,7 @@ int hash2(int key)
 }
 
 // HÀM THÊM PHẦN TỬ VÀO BẢNG BĂM TƯƠNG ỨNG VỚI PHƯƠNG PHÁP DÒ THỬ KÉP
-void addElementDoubleHashing(int *hashTable, int key)
+void addElementDH(int *hashTable, int key)
 {
     int index = hash(key);
     int i = 1;
@@ -229,7 +229,7 @@ void addElementDoubleHashing(int *hashTable, int key)
 }
 
 // HÀM TÌM KIẾM PHẦN TỬ TRONG BẢNG BĂM TƯƠNG ỨNG VỚI PHƯƠNG PHÁP DÒ THỬ KÉP
-int searchElementDoubleHashing(int *hashTable, int key)
+int searchElementDH(int *hashTable, int key)
 {
     int index = hash(key);
     int i = 1;
@@ -244,9 +244,9 @@ int searchElementDoubleHashing(int *hashTable, int key)
 }
 
 // HÀM XÓA PHẦN TỬ TRONG BẢNG BĂM TƯƠNG ỨNG VỚI PHƯƠNG PHÁP DÒ THỬ KÉP
-void deleteElementDoubleHashing(int *hashTable, int key)
+void deleteElementDH(int *hashTable, int key)
 {
-    int index = searchElementDoubleHashing(hashTable, key);
+    int index = searchElementDH(hashTable, key);
     if (index != -1)
         hashTable[index] = -1;
 }
