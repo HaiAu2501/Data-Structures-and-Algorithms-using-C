@@ -5,12 +5,20 @@
  | + Tất cả các mức trừ mức cuối cùng đều đầy, mức cuối cùng điền từ trái sang phải.
  | + Giá trị của nút cha lớn hơn hoặc bằng giá trị của nút con.
  | -> Từ chính chất có thể suy ra, gốc của heap (nút đầu tiên) là phần tử lớn nhất.
- | - Heap được cài đặt bằng mảng, ví dụ A[1..n].
+ | - Heap được cài đặt bằng mảng, ví dụ A[1..n] (đánh số từ 1).
  | + Gốc của heap là A[1].
  | + Con trái của nút cha A[i] là A[2*i].
  | + Con phải của nút cha A[i] là A[2*i + 1].
  | + Cha của nút con A[i] là A[i/2].
  | -> Các phần tử trong mảng con A[n/2 + 1..n] là các nút lá.
+ */
+
+/* Với mảng đánh số từ 0, ta có các công thức:
+ | - Gốc của heap là A[0].
+ | - Con trái của nút cha A[i] là A[2*i + 1].
+ | - Con phải của nút cha A[i] là A[2*i + 2].
+ | - Cha của nút con A[i] là A[(i - 1)/2].
+ | -> Các phần tử trong mảng con A[n/2..n-1] là các nút lá.
  */
 
 /* CÓ 2 DẠNG HEAP:
