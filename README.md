@@ -33,6 +33,75 @@ Ngôn ngữ C và C++ là lựa chọn phổ biến cho việc học và ứng d
 
 Chương trình học này được thiết kế để dẫn dắt bạn từ cơ bản đến nâng cao, nắm vững những khái niệm và kỹ thuật quan trọng nhất trong lĩnh vực lập trình. Mỗi tuần, bạn sẽ tập trung vào một hoặc nhiều chủ đề cụ thể, bắt đầu từ nền tảng, xây dựng lên những kiến thức phức tạp hơn.
 
+<div align="center">
+<table class="tg"><thead>
+  <tr>
+    <th class="tg-0lax"></th>
+    <th class="tg-0lax">Chủ đề</th>
+    <th class="tg-0lax">Nội dung</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td class="tg-nrix" rowspan="7">Thuật toán</td>
+    <td class="tg-0lax">Recursion</td>
+    <td class="tg-0lax">Đệ quy</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Backtracking</td>
+    <td class="tg-0lax">Quay lui</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Divide and Conquer</td>
+    <td class="tg-0lax">Chia để trị</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Branch and Bound</td>
+    <td class="tg-0lax">Nhánh cận</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Greedy Algorithm</td>
+    <td class="tg-0lax">Tham lam</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Dynamic Programming</td>
+    <td class="tg-0lax">Quy hoạch động</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Graph Algorithms</td>
+    <td class="tg-0lax">Các thuật toán trên đồ thị</td>
+  </tr>
+  <tr>
+    <td class="tg-cly1" rowspan="7">Cấu trúc dữ liệu</td>
+    <td class="tg-0lax">Linked List</td>
+    <td class="tg-0lax">Danh sách liên kết</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Stack</td>
+    <td class="tg-0lax">Ngăn xếp</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Queue</td>
+    <td class="tg-0lax">Hàng đợi</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Deque</td>
+    <td class="tg-0lax">Hàng đợi hai đầu</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Trees</td>
+    <td class="tg-0lax">Cây tổng quát, cây nhị phân</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Hash Table</td>
+    <td class="tg-0lax">Bảng băm</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Graph</td>
+    <td class="tg-0lax">Đồ thị</td>
+  </tr>
+</tbody></table>
+</div>
+
 ## ⭐ Độ phức tạp của thuật toán
 
 ## ⭐ Tài liệu tham khảo
