@@ -1,57 +1,60 @@
-#include <iostream>
-#include <vector> // Thư viện hỗ trợ vector
+#include <iostream> // Thư viện hỗ trợ nhập xuất cơ bản
+#include <vector>   // Thư viện hỗ trợ vector
+
 using namespace std;
 
-// Trong C++, vector là một cấu trúc dữ liệu mảng động, cho phép thêm, xóa phần tử một cách linh hoạt
-/* - Vector là kiểu dữ liệu trừu tượng (abstract data type), còn gọi là array list.
- * - Vector hỗ trợ các hàm cơ bản bảo gồm:
- * + size(): trả về số lượng phần tử trong vector
- * + empty(): kiểm tra vector có rỗng hay không
- * + resize(n): thay đổi kích thước vector thành n phần tử
- * + vector[i]: trả về phần tử ở vị trí i trong vector
- * + front(): trả về tham chiếu đến phần tử đầu tiên trong vector -> độ phức tạp O(1)
- * + back(): trả về tham chiếu đến phần tử cuối cùng trong vector -> độ phức tạp O(1)
- * + push_back(x): thêm phần tử x vào cuối vector
- * -> độ phức tạp O(1) nếu không cần cấp phát thêm bộ nhớ, O(n) nếu cần cấp phát thêm bộ nhớ
- * + pop_back(): xóa phần tử cuối cùng của vector và giảm kích thước vector đi 1
- */
+// Trong C++, vector là một cấu trúc dữ liệu mảng động, lưu trữ một dãy các phần tử cùng kiểu dữ liệu và có thể thay đổi kích thước.
 
-void printVector(vector<int> v)
-{
-    for (int i = 0; i < v.size(); i++)
-        cout << v[i] << " ";
-    cout << endl;
-}
+// Khai báo một vetor:
+vector<int> a;                   // Vector chứa các số nguyên
+vector<int> b(5);                // Vector chứa 5 phần tử, mỗi phần tử có giá trị mặc định là 0
+vector<int> c(5, 1);             // Vector chứa 5 phần tử, mỗi phần tử có giá trị mặc định là 1
+vector<int> d = {1, 2, 3, 4, 5}; // Vector chứa 5 phần tử, giá trị của các phần tử lần lượt là 1, 2, 3, 4, 5
 
-// Ví dụ:
 int main()
 {
-    // Khai báo vector
-    vector<int> v(6); // Khởi tạo vector với 6 phần tử, mỗi phần tử có giá trị mặc định là 0
-    printVector(v);
+    vector<int> v = {1, 2, 3, 4, 5}; // Khai báo vector v chứa 5 phần tử, giá trị của các phần tử lần lượt là 1, 2, 3, 4, 5
 
-    // Thêm phần tử vào vector
-    v.push_back(1);
-    v.push_back(2);
-    v.push_back(3);
-    printVector(v);
+    // Truy cập phần tử của vector:
+    cout << v[1] << endl;      // In ra phần tử thứ 2 của vector v (v[1] = 2)
+    cout << v.at(3) << endl;   // In ra phần tử thứ 4 của vector v (v.at(3) = 4)
+    cout << v.front() << endl; // In ra phần tử đầu tiên của vector v (v.front() = 1)
+    cout << v.back() << endl;  // In ra phần tử cuối cùng của vector v (v.back() = 5)
 
-    // Xóa phần tử cuối cùng của vector
-    v.pop_back();
-    printVector(v);
+    // Thêm phần tử vào vector:
+    v.push_back(6);    // Thêm phần tử 6 vào cuối vector v -> v = {1, 2, 3, 4, 5, 6}
+    v.emplace_back(7); // Thêm phần tử 7 vào cuối vector v (hiệu quả hơn hàm push_back trong một số trường hợp) -> v = {1, 2, 3, 4, 5, 6, 7}
 
-    // Truy cập phần tử trong vector
-    cout << "v[2] = " << v[2] << endl;
+    // Xóa phần tử khỏi vector:
+    v.pop_back();           // Xóa phần tử cuối cùng của vector v -> v = {1, 2, 3, 4, 5, 6}
+    v.erase(v.begin() + 2); // Xóa phần tử thứ 3 của vector v -> v = {1, 2, 4, 5, 6}
+    v.clear();              // Xóa tất cả phần tử của vector v -> v = {}
 
-    // Thay đổi kích thước vector
-    v.resize(10); // Thay đổi kích thước vector thành 10 phần tử
-    printVector(v);
+    // Các phương thức khác:
+    cout << "Size: " << v.size() << endl;         // In ra số lượng phần tử của vector v
+    cout << "Capacity: " << v.capacity() << endl; // In ra số lượng phần tử mà vector v có thể chứa mà không cần cấp phát thêm bộ nhớ
+    cout << "Empty: " << v.empty() << endl;       // Kiểm tra vector v có rỗng không (trả về true nếu rỗng, ngược lại trả về false)
 
-    // Nếu thay đổi về kich thước nhỏ hơn, các phần tử sau sẽ bị xóa
-    v.resize(2);
-    printVector(v);
+    // Thay đổi kích thước vector:
+    v.resize(10); // Thay đổi kích thước vector v thành 10 phần tử, các phần tử mới có giá trị mặc định là 0
 
-    // Trả về phần tử đầu tiên và cuối cùng của vector
-    cout << "First element: " << v.front() << endl;
-    cout << "Last element: " << v.back() << endl;
+    // Duyệt vector:
+    for (int i = 0; i < v.size(); i++) // Vòng lặp for truyền thống
+    {
+        cout << v[i] << " ";
+    }
+    cout << endl;
+
+    for (int &x : v) // Vòng lặp for-each
+    {
+        cout << x << " ";
+    }
+    cout << endl;
+
+    for (int x : v) // Vòng lặp for-each (sao chép giá trị)
+    {
+        cout << x << " ";
+    }
+
+    return 0;
 }
