@@ -3,10 +3,10 @@
 
 // Đề bài: Cộng hai số nguyên a, b mà 0 <= a, b <= 10^19
 /* Nhận xét:
- * Kiểu long long chứa được các số khoảng -9 * 10^18 đến 9 * 10^18
- * Tổng hai số có thể vượt quá giới hạn của kiểu long long, unsigned long long
- * => Cộng hai số bằng cách chuyển số nguyên thành chuỗi
- * => Cộng từng cặp ký tự từ phải sang trái
+ | Kiểu long long chứa được các số khoảng -9 * 10^18 đến 9 * 10^18
+ | Tổng hai số có thể vượt quá giới hạn của kiểu long long, unsigned long long
+ | => Cộng hai số bằng cách chuyển số nguyên thành chuỗi
+ | => Cộng từng cặp ký tự từ phải sang trái
  */
 
 // Hàm cộng hai số nguyên dương lớn

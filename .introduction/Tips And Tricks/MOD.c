@@ -1,15 +1,16 @@
 #include <stdio.h>
 
-// Trong nhiều bài toán lập trình thi đấu, cần tính MOD (10^9 + 7) của một số nguyên.
-// Đây là một số nguyên tố. Trong trường hợp tính mod a/b, ta có thể thay đổi thành a * b^-1 mod p.
-// -> Sử dụng định lý Fermat nhỏ: a^(p-1) ≡ 1 (mod p) -> a^(p-2) ≡ a^-1 (mod p).
+/* Trong nhiều bài toán lập trình thi đấu, cần tính MOD (10^9 + 7) của một số nguyên.
+ | Đây là một số nguyên tố. Trong trường hợp tính mod a/b, ta có thể thay đổi thành a * b^-1 mod p.
+ | -> Sử dụng định lý Fermat nhỏ: a^(p-1) ≡ 1 (mod p) -> a^(p-2) ≡ a^-1 (mod p).
+ */
 
 #define MOD 1000000007
 
 /* THUẬT TOÁN TÍNH MŨ:
- * - Đầu vào: a, b.
- * - Đầu ra: a^b mod MOD.
- * - Độ phức tạp: O(logb), tính bằng đệ quy.
+ | - Đầu vào: a, b.
+ | - Đầu ra: a^b mod MOD.
+ | - Độ phức tạp: O(logb), tính bằng đệ quy.
  */
 int power(int a, int b)
 {
@@ -22,8 +23,8 @@ int power(int a, int b)
 }
 
 /* THUẬT TOÁN TÍNH a/b MOD MOD:
- * - Đầu vào: a, b.
- * - Đầu ra: a * b^-1 mod MOD.
+ | - Đầu vào: a, b.
+ | - Đầu ra: a * b^-1 mod MOD.
  */
 int divide(int a, int b)
 {
