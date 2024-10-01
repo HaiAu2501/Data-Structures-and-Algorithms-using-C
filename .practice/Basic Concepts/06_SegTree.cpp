@@ -81,6 +81,34 @@ int queryMax(int node, int start, int end, int L, int R)
     return max(p1, p2);
 }
 
+/* Hàm cập nhật giá trị tại vị trí idx thành value:
+ */
+void updateTree(int node, int start, int end, int idx, int value)
+{
+    if (start == end)
+    {
+        // Cập nhật giá trị tại nút lá
+        segTree[node] = value;
+        a[idx] = value;
+    }
+    else
+    {
+        int mid = (start + end) / 2;
+        if (idx <= mid)
+        {
+            // Cập nhật cây con bên trái
+            updateTree(2 * node, start, mid, idx, value);
+        }
+        else
+        {
+            // Cập nhật cây con bên phải
+            updateTree(2 * node + 1, mid + 1, end, idx, value);
+        }
+        // Cập nhật giá trị của nút hiện tại sau khi cập nhật cây con
+        segTree[node] = max(segTree[2 * node], segTree[2 * node + 1]);
+    }
+}
+
 int main()
 {
     ios::sync_with_stdio(0);
@@ -88,15 +116,31 @@ int main()
     cout.tie(0);
 
     cin >> n;
-    a.resize(n);
-    segTree.resize(4 * n);
+    a.resize(n + 1);
+    segTree.resize(4 * (n + 1));
 
-    for (int &x : a)
-        cin >> x;
+    for (int i = 1; i <= n; i++)
+        cin >> a[i];
+
+    buildTree(1, 1, n);
 
     cin >> m;
 
     while (m--)
     {
+        string q;
+        cin >> q;
+        if (q == "update")
+        {
+            int idx, value;
+            cin >> idx >> value;
+            updateTree(1, 1, n, idx, value);
+        }
+        if (q == "get-max")
+        {
+            int L, R;
+            cin >> L >> R;
+            cout << queryMax(1, 1, n, L, R) << endl;
+        }
     }
 }
