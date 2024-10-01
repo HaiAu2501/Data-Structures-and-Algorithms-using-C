@@ -51,7 +51,6 @@ int main()
         log2_table[i] = log2_table[i / 2] + 1;
 
     string s;
-
     cin >> s;
 
     /* THUẬT TOÁN SPARSE TABLE:
@@ -65,6 +64,7 @@ int main()
 
     vector<vector<int>> M(n, vector<int>(log2_table[n] + 1));
 
+    // Xây dựng Sparse Table
     for (int i = 0; i < n; i++)
         M[i][0] = a[i];
 
@@ -89,6 +89,7 @@ int main()
         {
             int i, j;
             cin >> i >> j;
+            // Vì dãy bắt đầu từ chỉ số 1
             i--;
             j--;
             int k = log2_table[j - i + 1];
