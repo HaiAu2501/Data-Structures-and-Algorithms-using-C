@@ -16,12 +16,39 @@ using namespace std;
  */
 
 int n, m, r, c;
-vector<vector<int>> A;
-int dx[] = {1, 0, -1, 0};
-int dy[] = {0, 1, 0, -1};
+int A[1005][1005], dist[1005][1005], visited[1005][1005];
+int dx[4] = {1, 0, -1, 0}, dy[4] = {0, 1, 0, -1};
+queue<pair<int, int>> q;
 
-int BFS()
+void BFS(int r, int c)
 {
+    q.push({r, c});
+
+    while (!q.empty())
+    {
+        pair<int, int> pos = q.front();
+        q.pop();
+
+        for (int k = 0; k < 4; k++)
+        {
+            int i = pos.first + dx[k];
+            int j = pos.second + dy[k];
+            if (i >= 1 && i <= n && j >= 1 && j <= m && A[i][j] == 0 && visited[i][j] == 0)
+            {
+                if (i == 1 || i == n || j == 1 || j == m)
+                {
+                    cout << dist[pos.first][pos.second] + 1;
+                    return;
+                }
+
+                q.push({i, j});
+                visited[i][j] = 1;
+                dist[i][j] = dist[pos.first][pos.second] + 1;
+            }
+        }
+    }
+
+    cout << -1;
 }
 
 int main()
@@ -31,11 +58,20 @@ int main()
     cout.tie(0);
 
     cin >> n >> m >> r >> c;
-    A.resize(n + 1, vector<int>(m + 1));
 
     for (int i = 1; i <= n; i++)
     {
         for (int j = 1; j <= m; j++)
             cin >> A[i][j];
     }
+
+    if (A[r][c] == 1)
+    {
+        cout << -1;
+        return 1;
+    }
+
+    BFS(r, c);
+
+    return 0;
 }

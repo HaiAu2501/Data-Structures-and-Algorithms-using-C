@@ -44,7 +44,7 @@ void main()
     for (int i = 0; i < n; i++)
         scanf("%d", &b[i]);
 
-    int *c[m];
+    int *c = (int **)malloc(sizeof(int *) * (m + 1));
     for (int i = 0; i < m; i++)
         c[i] = (int *)malloc(sizeof(int) * n);
 
