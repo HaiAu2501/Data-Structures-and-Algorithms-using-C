@@ -15,7 +15,7 @@ using namespace std;
  | - Độ dài dãy con chung dài nhất của 2 dãy số.
  */
 
-/* Ý TƯỞNG: 
+/* Ý TƯỞNG:
  | - Xây dựng bảng c[i][j] là độ dài dãy con chung dài nhất của 2 dãy a[1..i] và b[1..j].
  | - Nếu a[i] = b[j], c[i][j] = c[i-1][j-1] + 1.
  | - Nếu a[i] != b[j], c[i][j] = max(c[i-1][j], c[i][j-1]).

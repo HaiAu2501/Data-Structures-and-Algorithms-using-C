@@ -38,10 +38,8 @@ int main()
     for (int i = 1; i < n; i++)
     {
         for (int j = 0; j < i; j++)
-        {
             if (a[i] > a[j])
                 s[i] = max(s[i], s[j] + 1);
-        }
     }
 
     cout << *max_element(s.begin(), s.end());
