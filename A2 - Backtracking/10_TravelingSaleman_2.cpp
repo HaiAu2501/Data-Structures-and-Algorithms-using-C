@@ -45,7 +45,7 @@ int main()
         for (int j = 0; j < n; j++)
         {
             cin >> c[i][j];
-            if (c[i][j] < c_min)
+            if (i != j & c[i][j] < c_min)
                 c_min = c[i][j];
         }
     }
