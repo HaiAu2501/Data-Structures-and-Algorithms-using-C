@@ -27,13 +27,9 @@ void sum(ull a, ull b)
     ull d = (a / 10) + (b / 10) + (c / 10); // (c / 10) là thành phần nhớ của phép cộng
 
     if (d > 0)
-    {
         cout << d << (c % 10);
-    }
     else
-    {
         cout << c;
-    }
 }
 
 /* CÁCH 2:

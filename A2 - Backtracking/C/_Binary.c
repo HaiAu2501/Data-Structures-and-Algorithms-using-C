@@ -33,7 +33,8 @@ void try(int k, int *a)
 int main()
 {
     scanf("%d", &n);
-    int a[n];
+    int *a = (int *)malloc(n * sizeof(int));
     try(0, a);
+    free(a);
     return 0;
 }
