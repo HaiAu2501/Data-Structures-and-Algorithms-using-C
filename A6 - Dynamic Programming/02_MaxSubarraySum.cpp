@@ -5,6 +5,9 @@ using namespace std;
 // Tìm mảng con (dãy liên tiếp các phần tử) có tổng lớn nhất.
 // Thuật toán Kadane - Độ phức tạp: O(n)
 
+// Nếu tìm dãy không liên tiếp thì bài toán tầm thường
+// Vì chỉ cần chọn các phần tử dương
+
 int main()
 {
     int n;

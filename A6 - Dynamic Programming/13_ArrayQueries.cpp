@@ -59,7 +59,7 @@ int main()
      | - Với j > 0, chia dãy a[i..i + 2^j - 1] thành 2 dãy có độ dài 2^(j - 1) là a[i..i + 2^(j-1) - 1], và a[i + 2^(j - 1)..i+ 2^j - 1]
      | -> Công thức truy hồi M[i][j] = max(M[i][j - 1], M[i + 2^(j - 1)][j - 1])
      | - Để tìm số lớn nhất trong dãy con a[i..j], chia dãy này thành 2 dãy con có độ dài 2^k với k = [log2(j - i + 1)]
-     | -> Số lớn nhất trong dãy a[i][j] là max(M[i][k], M[j - 2^k + 1][k])
+     | -> Số lớn nhất trong dãy a[i..j] là max(M[i][k], M[j - 2^k + 1][k])
      */
 
     vector<vector<int>> M(n, vector<int>(log2_table[n] + 1));
