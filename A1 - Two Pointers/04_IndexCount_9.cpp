@@ -1,6 +1,6 @@
 #include <iostream>
-#include <vector>
 #include <unordered_map>
+#include <vector>
 
 using namespace std;
 
@@ -8,15 +8,15 @@ using namespace std;
 
 /* Ý TƯỞNG:
  | - Sử dụng mảng freq để đếm số lần xuất hiện của mỗi phần tử trong dãy a.
- | - Số cặp số (i, j) mà a[i] = a[j] chính là tổ hợp chập 2 của số lần xuất hiện của phần tử đó.
+ | - Số cặp số (i, j) mà a[i] = a[j] chính là tổ hợp chập 2 của số lần xuất hiện
+ của phần tử đó.
  */
 
 typedef long long ll;
 
 #define MOD 1000000007
 
-int main()
-{
+int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
@@ -26,15 +26,13 @@ int main()
     vector<int> a(n);
     unordered_map<int, ll> freq;
 
-    for (int &x : a)
-    {
+    for (int &x : a) {
         cin >> x;
         freq[x]++;
     }
 
     ll ans = 0;
-    for (auto &pair : freq)
-    {
+    for (auto &pair : freq) {
         ll k = pair.second;
         ans += k * (k - 1) / 2;
         ans %= MOD;

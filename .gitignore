@@ -7,6 +7,7 @@
 
 # Ignore my private files
 .private/
+.archive/
 
 # Ignore my unpublished files
 DS6 - Heap/

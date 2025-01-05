@@ -8,13 +8,11 @@ using namespace std;
 // Nếu tìm dãy không liên tiếp thì bài toán tầm thường
 // Vì chỉ cần chọn các phần tử dương
 
-int main()
-{
+int main() {
     int n;
     cin >> n;
     int maxSum = INT_MIN, sum = 0;
-    for (int i = 0; i < n; i++)
-    {
+    for (int i = 0; i < n; i++) {
         int x;
         cin >> x;
         sum = max(x, sum + x);
